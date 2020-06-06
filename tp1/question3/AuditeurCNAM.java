@@ -45,7 +45,25 @@ public class AuditeurCNAM {
      *         homonymes...
      */
     public String login() {
-        return "";// à compléter
+    
+        String n;
+        String p;
+       
+        n = this.nom.substring(0,Math.min(this.nom.length(),6));
+           
+        p = this.prenom.substring(0,1);
+       
+        n = n.toLowerCase();
+        p = p.toLowerCase();
+       
+        n = pasAccents(n);
+        p = pasAccents(p);
+   
+        n = n.replaceAll("[^a-z]","_");
+        p = p.replaceAll("[^a-z]","_");
+        return n+"_"+p;
+    }
+
     }
 
     /**
@@ -73,6 +91,18 @@ public class AuditeurCNAM {
      */
     public String matricule() {
         return null;// à compléter
+    }
+        public String pasAccents(String x){
+        
+        String accents = "àâäãéèêëîïìöôòõüûùÀÂÄÃÉÈÊËÎÏÌÖÔÒÕÜÛÙ";
+			
+        String paccents = "aaaaeeeeiiioooouuuaaaaeeeeiiioooouuu";//tableau ayant les mêmes lettres 
+			
+        int l = accents.length();
+        for(int i = 0; i<l ; i++){
+            x = x.replace(accents.charAt(i), paccents.charAt(i));
+        }
+        return x;
     }
 
     /**

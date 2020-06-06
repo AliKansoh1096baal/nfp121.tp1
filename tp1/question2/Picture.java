@@ -20,6 +20,7 @@ public class Picture {
     private Square window;
     private Triangle roof;
     private Circle sun;
+    private Circle sunj;
 
     /**
      * Constructor for objects of class Picture
@@ -32,6 +33,7 @@ public class Picture {
      * Draw this picture.
      */
     public void draw() {
+     
         wall = new Square();
         wall.moveVertical(80);
         wall.changeSize(100);
@@ -50,12 +52,22 @@ public class Picture {
         roof.makeVisible();
 
         sun = new Circle();
-        sun.changeColor("yellow");
+        sun.changeColor("blue");
         sun.moveHorizontal(180);
         sun.moveVertical(-10);
         sun.changeSize(60);
         sun.makeVisible();
+        
+        sunJ = new Circle();
+        sunJ.changeColor("yellow");
+        sunJ.moveHorizontal(170);
+        sunJ.moveVertical(-15);
+        sunJ.changeSize(60);
+        sunJ.makeVisible();
+                   
+        
     }
+
 
     /**
      * Change this picture to black/white display
@@ -80,7 +92,13 @@ public class Picture {
             window.changeColor("black");
             roof.changeColor("green");
             sun.changeColor("yellow");
-        }
+        }}
+           public void sunset(){
+         if (sun != null) {// only if it's painted already...
+            sun.slowMoveVertical(500);
+        } 
+    }
+
     }
 
 }
